@@ -1,0 +1,26 @@
+class Profesor {
+  String? dni;
+  String? nombre;
+  double? sueldoBruto;
+
+  Profesor(this.dni, this.nombre, [this.sueldoBruto]);
+
+  Profesor.soloSueldo(this.sueldoBruto);
+  
+  double? get sueldoNeto => sueldoBruto != null ? sueldoBruto! * 0.92 : null;
+}
+
+void main() {
+  Profesor profesor1 = Profesor("12345678", "Juan Pérez");
+  profesor1.sueldoBruto = 1800;
+  
+  print("Profesor 1: DNI: ${profesor1.dni}, Nombre: ${profesor1.nombre}, Sueldo Bruto:${profesor1.sueldoBruto}");
+  print("Sueldo Neto Profesor 1:${profesor1.sueldoNeto}");
+
+  Profesor profesor2 = Profesor.soloSueldo(1900);
+  profesor2.dni = "87654321";
+  profesor2.nombre = "Ana López";
+
+  print("Profesor 2: DNI: ${profesor2.dni}, Nombre: ${profesor2.nombre}, Sueldo Bruto:${profesor2.sueldoBruto}");
+  print("Sueldo Neto Profesor 2:${profesor2.sueldoNeto}");
+}
